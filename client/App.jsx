@@ -12,9 +12,6 @@ class App extends Component {
         <div>
           <h1 className="header">CacheQL</h1>
         </div>
-        <div className="infoBox">
-          <h1 id="header">{"Some stuff"}</h1>
-        </div>
         <div>
           <MainContainer />
         </div>
