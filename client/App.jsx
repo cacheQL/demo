@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import MainContainer from './containers/MainContainer.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -13,6 +14,9 @@ class App extends Component {
         </div>
         <div className="infoBox">
           <h1 id="header">{"Some stuff"}</h1>
+        </div>
+        <div>
+          <MainContainer />
         </div>
       </div>
     );
