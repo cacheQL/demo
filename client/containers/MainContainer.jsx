@@ -9,8 +9,8 @@ class MainContainer extends Component {
     this.state = {
       cacheResult: "cql result rendered HERE",
       noCacheResult: "db result rendered HERE",
-      cacheTime: "good time rendered HERE",
-      noCacheTime: "worse time rendered HERE"
+      cacheTime: 0.76,
+      noCacheTime: 0.43,
     };
     this.queryPost = this.queryPost.bind(this);
   }
@@ -43,7 +43,10 @@ class MainContainer extends Component {
           cacheTime={this.state.cacheTime}
           noCacheTime={this.state.noCacheTime}
         />
-        <BarContainer />
+        <BarContainer 
+          cacheTime={this.state.cacheTime}
+          noCacheTime={this.state.noCacheTime}
+        />
       </React.Fragment>
     );
   }
