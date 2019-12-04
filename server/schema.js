@@ -1,4 +1,4 @@
-const { buildSchema } = require('graphql');
+const { buildSchema } = require("graphql");
 
 //capitalize operation type in schema
 const schema = buildSchema(`
