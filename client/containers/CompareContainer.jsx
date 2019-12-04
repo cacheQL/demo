@@ -5,10 +5,10 @@ import CacheQL from '../components/CacheQL.jsx';
 
 const CompareContainer = (props) => {
     return ( 
-        <div>
+        <div id="compareContainer">
             <h3>compare container</h3>
             <NoCacheQLBox />
-            <CacheQLBox />
+            <CacheQLBox  />
         </div>
      );
 }

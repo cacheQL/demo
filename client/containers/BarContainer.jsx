@@ -1,12 +1,17 @@
 import React, {Component} from 'react';
 import Chart from 'react-apexcharts';
 
-const cachedata = 700;
-const nocachedata = 50000;
+
+
+
 
 class BarContainer extends Component {
   constructor(props){
     super(props);
+
+  const cachedata = this.props.cachedata;
+  const nocachedata = this.props.nocachedata;
+
     this.state = {
       options : {
         chart: {
@@ -19,11 +24,26 @@ class BarContainer extends Component {
             "Cache query",
           ]
         },
+        title: {
+          text: "CacheQL vs No Cache query",
+          align: "center",
+          margin: 20,
+          offsetY: 20,
+          style: {
+            fontSize: "25px"
+          }
+        },
+        fill: {
+          colors: ["#666"]
+        },
+        dataLabels: {
+          enabled: false
+        },
         plotOptions: {
           bar: {
             horizontal: true
           }
-        }
+        },
       },
       series: [
         {

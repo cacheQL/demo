@@ -1,9 +1,15 @@
 import React from 'react';
 
+
+
+
 const ResultBox = (props) => {
     return ( 
-        <div>
-            <h4>result box</h4>
+        <div className="resultBoxContainer">
+          <div id="textbox">
+            <h2>Result Box</h2>
+            <p >Some text</p>
+          </div> 
         </div>
      );
 }
