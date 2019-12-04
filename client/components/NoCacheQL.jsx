@@ -6,7 +6,7 @@ import TimeBox from '../components/TimeBox';
 const NoCacheQL = (props) => {
     return ( 
         <div>
-            <h2>nochacheql container</h2>
+            <h3>nochacheql container</h3>
             <TimeBox />
             <ResultBox />
         </div>

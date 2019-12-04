@@ -8,7 +8,10 @@ class MainContainer extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-
+            cacheResult: '',
+            cacheTime: '',
+            noCacheResult: '',
+            noCacheTime: ''
          }
     }
     render() { 

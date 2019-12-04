@@ -6,7 +6,7 @@ import TimeBox from '../components/TimeBox';
 const CacheQL = (props) => {
     return ( 
         <div>
-            <h2>cacheql container</h2>
+            <h3>cacheql container</h3>
             <TimeBox />
             <ResultBox />
         </div>
