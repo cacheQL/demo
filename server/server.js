@@ -15,9 +15,11 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
-app.use('/graphql', graphqlHTTP({
-  schema: schema
-}));
+// app.use('/graphql', graphqlHTTP({
+//   schema: schema,
+//   rootValues: root
+// }));
+
 
 app.use(express.static("public"));
 
