@@ -4,8 +4,8 @@
   "description": "front end cacheQL demo",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/server.js",
     "dev": "concurrently \" cross-env NODE_ENV=development webpack-dev-server --open \" \" nodemon server/server.js \"",
     "build": "NODE_ENV=production webpack"
   },
@@ -15,6 +15,9 @@
     "apexcharts": "^3.10.1",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "graphql": "^14.5.8",
+    "node-fetch": "^2.6.0",
     "node-sass": "^4.13.0",
     "path": "^0.12.7",
     "react": "^16.12.0",
