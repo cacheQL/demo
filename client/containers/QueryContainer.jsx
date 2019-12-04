@@ -9,7 +9,7 @@ const QueryContainer = (props) => {
                 <br/>
                 Message: <input type="text" className="lname" placeholder="Message"/>
                 <br/>
-                <input type="submit" value="Submit"/>
+                <input type="submit" value="Submit" onClick={props.queryPost}/>
             </form>
 
             <form className="message-get">

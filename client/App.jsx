@@ -6,22 +6,6 @@ class App extends Component {
     super(props);
   }
 
-  queryPost(event) {
-    fetch('/query', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify({ 
-        query: `{ 
-          name {
-            message
-          } 
-        }`
-      })
-    })
-    .then(res => res.json())
-    .then(res => console.log(res.data))
-  }
-
   render() {
     return (
       <div>
