@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import MainContainer from './containers/MainContainer.jsx';
+import MainContainer from "./containers/MainContainer.jsx";
 
 class App extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <div>
         <div>
-          <h1 className="header">CacheQL</h1>
+          <h1 className="header">CacheQL Demo</h1>
         </div>
         <div>
           <MainContainer />
