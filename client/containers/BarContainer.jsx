@@ -1,16 +1,13 @@
 import React, {Component} from 'react';
 import Chart from 'react-apexcharts';
 
-
-
-
-
 class BarContainer extends Component {
   constructor(props){
     super(props);
 
-  const cachedata = this.props.cachedata;
-  const nocachedata = this.props.nocachedata;
+  const cacheTime = this.props.cacheTime;
+  const noCacheTime = this.props.noCacheTime;
+
 
     this.state = {
       options : {
@@ -20,8 +17,8 @@ class BarContainer extends Component {
         },
         xaxis: {
           categories: [
-            "DB query",
-            "Cache query",
+            "cacheTime",
+            "noCacheTime"
           ]
         },
         title: {
@@ -49,8 +46,8 @@ class BarContainer extends Component {
         {
           name: "Speed",
           data: [
-            cachedata,
-            nocachedata,
+            cacheTime,
+            noCacheTime
           ]
         }
       ],
