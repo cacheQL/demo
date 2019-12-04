@@ -35,3 +35,7 @@ body {
   font-size: 28px;
   align-items: baseline;
 } */
+
+.query-container {
+  border-style: solid;
+}
