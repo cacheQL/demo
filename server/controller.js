@@ -43,8 +43,8 @@ controller.getPerson = (req, res, next) => {
   if (res.locals.cache === null) {
     // console.log("in db");
     // console.log(req.body.name);
-    test.findOne({ query: req.body.name }).then(result => {
-      // console.log("db");
+    test.findOne({ name: req.body.query }).then(result => {
+      // console.log("db with cache");
       // console.log(result);
 
       const response = {
@@ -62,7 +62,7 @@ controller.getPerson = (req, res, next) => {
 
 controller.getPersonDB = (req, res, next) => {
   console.log("in db");
-  test.findOne({ query: req.body.name }).then(result => {
+  test.findOne({ name: req.body.query }).then(result => {
     console.log("db");
     console.log(result);
 

@@ -142,23 +142,23 @@ class MainContainer extends Component {
       });
   }
 
-  queryGet(event) {
-    event.preventDefault();
-    console.log("in queryGet");
-    fetch("/graphql", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        query: `{ 
-              name {
-                message
-              } 
-            }`
-      })
-    })
-      .then(res => res.json())
-      .then(res => console.log(res.data));
-  }
+  // queryGet(event) {
+  //   event.preventDefault();
+  //   console.log("in queryGet");
+  //   fetch("/graphql", {
+  //     method: "GET",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({
+  //       query: `{
+  //             name {
+  //               message
+  //             }
+  //           }`
+  //     })
+  //   })
+  //     .then(res => res.json())
+  //     .then(res => console.log(res.data));
+  // }
   render() {
     return (
       <React.Fragment>

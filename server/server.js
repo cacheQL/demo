@@ -40,11 +40,14 @@ app.post(
   controller.getPerson,
   cacheQL.cachify,
   (req, res) => {
+    console.log("res locals cache: ", res.locals.cache);
+
     res.status(200).send(res.locals.cache);
   }
 );
 
 app.post("/getPersonDB", controller.getPersonDB, (req, res) => {
+  console.log("res locals queryResponse: ", res.locals.queryResponse);
   res.status(200).send(res.locals.queryResponse);
 });
 
