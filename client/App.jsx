@@ -14,7 +14,7 @@ class App extends Component {
           <h1 className="header">CacheQL Demo</h1>
         </div>
         <div>
-          <MainContainer />
+          <MainContainer className="main-container"/>
         </div>
       </div>
     );

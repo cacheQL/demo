@@ -1,5 +1,5 @@
 const express = require("express");
-
+const logger = require('morgan')
 const bodyParser = require("body-parser");
 const path = require("path");
 const graphqlHTTP = require("express-graphql");
@@ -13,7 +13,7 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
-
+app.use(logger('dev'));
 app.use(bodyParser.json());
 
 const cacheQLData = {

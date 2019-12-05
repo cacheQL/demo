@@ -21,7 +21,7 @@ const ResultBox = props => {
 const NoCacheQL = props => {
   return (
     <div>
-      <h2>Without Cache QL</h2>
+      <h2>No CacheQL</h2>
       <ResultBox noCacheResult={props.noCacheResult} />
       <TimeBox noCacheTime={props.noCacheTime} />
       <h3>
