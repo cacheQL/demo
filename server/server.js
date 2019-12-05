@@ -1,13 +1,16 @@
 const express = require("express");
-const app = express();
-const PORT = 3000;
+
 const bodyParser = require("body-parser");
 const path = require("path");
 const graphqlHTTP = require("express-graphql");
 const graphql = require("graphql");
 
-const controller = require("./controller");
+const schema = require("./schema");
 const cacheQL = require("./cacheql");
+const controller = require("./controller");
+
+const app = express();
+const PORT = 3000;
 
 app.use(express.json());
 
