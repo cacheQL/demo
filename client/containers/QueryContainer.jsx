@@ -3,7 +3,7 @@ import React from "react";
 const QueryContainer = props => {
   return (
     <div className="query-container">
-      <h4>query container</h4>
+      <h4 className="query-container-title">Query</h4>
       <form className="message-send">
         Name:{" "}
         <input
@@ -36,7 +36,7 @@ const QueryContainer = props => {
           onChange={props.nameGetHandler}
         />
         <br />
-        <input type="submit" value="Get Message" onClick={props.queryGet} />
+        <input type="submit" value="Get Message" className="get-message-button" onClick={props.queryGet} />
       </form>
     </div>
   );

@@ -21,7 +21,7 @@ const ResultBox = props => {
 const CacheQL = props => {
   return (
     <div>
-      <h2>With CacheQL</h2>
+      <h2>CacheQL</h2>
       <ResultBox cacheResult={props.cacheResult} />
       <TimeBox cacheTime={props.cacheTime} />
       <h3>

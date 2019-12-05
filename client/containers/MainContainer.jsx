@@ -9,8 +9,8 @@ class MainContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cacheResult: "cql result rendered HERE",
-      noCacheResult: "db result rendered HERE",
+      cacheResult: "cache response",
+      noCacheResult: "db response",
       cacheTime: 0,
       noCacheTime: 0,
       name: "",
