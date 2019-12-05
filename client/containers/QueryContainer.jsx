@@ -15,7 +15,7 @@ const QueryContainer = (props) => {
             <form className="message-get">
                 Name: <input type="text" className="fname" placeholder="Name"/>
                 <br/>
-                <input type="submit" value="Get Message"/>
+                <input type="submit" value="Get Message" onClick={props.queryGet}/>
             </form>
         </div>
      );

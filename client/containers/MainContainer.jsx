@@ -13,6 +13,7 @@ class MainContainer extends Component {
       noCacheTime: 0.43,
     };
     this.queryPost = this.queryPost.bind(this);
+    this.queryget = this.queryGet.bind(this);
   }
 
   queryPost(event) {
@@ -33,6 +34,23 @@ class MainContainer extends Component {
       .then(res => console.log(res.data));
   }
 
+      queryGet(event) {
+        event.preventDefault();
+        console.log('in queryGet')
+        fetch('/graphql', {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json'},
+          body: JSON.stringify({ 
+            query: `{ 
+              name {
+                message
+              } 
+            }`
+          })
+        })
+        .then(res => res.json())
+        .then(res => console.log(res.data))
+      }
   render() {
     return (
       <React.Fragment>
