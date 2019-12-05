@@ -1,25 +1,20 @@
-import React, {Component} from 'react';
-import Chart from 'react-apexcharts';
+import React, { Component } from "react";
+import Chart from "react-apexcharts";
 
 class BarContainer extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-
-  const cacheTime = this.props.cacheTime;
-  const noCacheTime = this.props.noCacheTime;
-
+    const cacheTime = this.props.cacheTime;
+    const noCacheTime = this.props.noCacheTime;
 
     this.state = {
-      options : {
+      options: {
         chart: {
           background: "#f4f4f4",
           foreColor: "#333"
         },
         xaxis: {
-          categories: [
-            "cacheTime",
-            "noCacheTime"
-          ]
+          categories: ["cacheTime", "noCacheTime"]
         },
         title: {
           text: "CacheQL vs No Cache query",
@@ -31,7 +26,7 @@ class BarContainer extends Component {
           }
         },
         fill: {
-          colors: ["#666"]
+          colors: ["rgb(241, 173, 243)"]
         },
         dataLabels: {
           enabled: false
@@ -40,24 +35,16 @@ class BarContainer extends Component {
           bar: {
             horizontal: true
           }
-        },
-      },
-      series: [
-        {
-          name: "Speed",
-          data: [
-            cacheTime,
-            noCacheTime
-          ]
         }
-      ],
-    }
+      }
+    };
   }
+
 
   render() {
     return <Chart 
       options = {this.state.options}
-      series={this.state.series}
+      series={this.props.series}
       type="bar"
       height="18%"
       width="100%"
