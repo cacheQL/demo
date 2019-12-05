@@ -11,11 +11,20 @@ class MainContainer extends Component {
     this.state = {
       cacheResult: "cql result rendered HERE",
       noCacheResult: "db result rendered HERE",
-      cacheTime: 0.76,
-      noCacheTime: 0.43,
+      cacheTime: 0,
+      noCacheTime: 0,
       name: "",
       message: "",
-      nameGet: ""
+      nameGet: "",
+      series: [
+        {
+          name: "Speed",
+          data: [
+            0, //cacheQL
+            0 //NoCacheQL
+          ]
+        }
+      ]
     };
     this.queryPost = this.queryPost.bind(this);
     this.queryGet = this.queryGet.bind(this);
@@ -44,7 +53,7 @@ class MainContainer extends Component {
 
   queryPost(event) {
     event.preventDefault();
-    console.log("in queryPost");
+    console.log("FrontEnd in queryPost");
 
     axios
       .post(
@@ -63,7 +72,7 @@ class MainContainer extends Component {
       .then(res => {
         console.log("frontend");
         console.log(res);
-        console.log(res.data);
+        console.log("Res.data from /addPerson", res.data);
         // if (res.status === 200) return this.props.history.push('/login');
         // return this.props.history.push('/signup');
       })
@@ -81,7 +90,10 @@ class MainContainer extends Component {
 
   queryGet(event) {
     event.preventDefault();
-    console.log("in queryGet");
+    console.log("FrontEnd in queryGet - /getPerson");
+
+    //Start 1st TIMER
+    const getPersonStart = Date.now();
 
     axios
       .post(
@@ -99,18 +111,38 @@ class MainContainer extends Component {
       .then(res => {
         console.log("frontend");
         console.log(res);
-        console.log(res.data);
+        console.log("queryGet", res.data);
+
+        //end TIMER
+        const getPersonEnd = Date.now();
+        const finalTimeGetPerson = getPersonEnd - getPersonStart;
+        console.log("Final Time - /getPerson", finalTimeGetPerson);
 
         this.setState({
-          cacheResult: JSON.stringify(res.data)
+          cacheResult: JSON.stringify(res.data),
+          cacheTime: finalTimeGetPerson
         });
-        // if (res.status === 200) return this.props.history.push('/login');
-        // return this.props.history.push('/signup');
+
+        this.setState({
+          series: [
+            {
+              name: "Speed",
+              data: [
+                finalTimeGetPerson, //cacheQL
+                this.state.noCacheTime //NoCacheQL
+              ]
+            }
+          ]
+        });
+
       })
       .catch(err => {
         console.log("error axios");
         console.log(err);
       });
+
+    //Start 1st TIMER
+    const getPersonDBStart = Date.now();
 
     axios
       .post(
@@ -130,11 +162,28 @@ class MainContainer extends Component {
         console.log(res);
         console.log(res.data);
 
+        //end TIMER
+        const getPersonDBEnd = Date.now();
+        const finalPersonDBEnd = getPersonDBEnd - getPersonDBStart;
+        console.log("Final Time - /getPersonDB", finalPersonDBEnd);
+
         this.setState({
-          noCacheResult: JSON.stringify(res.data)
+          noCacheResult: JSON.stringify(res.data),
+          noCacheTime: finalPersonDBEnd
         });
-        // if (res.status === 200) return this.props.history.push('/login');
-        // return this.props.history.push('/signup');
+
+        this.setState({
+          series: [
+            {
+              name: "Speed",
+              data: [
+                this.state.cacheTime, //cacheQL
+                finalPersonDBEnd //NoCacheQL
+              ]
+            }
+          ]
+        });
+  
       })
       .catch(err => {
         console.log("error axios");
@@ -179,6 +228,7 @@ class MainContainer extends Component {
           noCacheTime={this.state.noCacheTime}
         />
         <BarContainer
+          series={this.state.series}
           cacheTime={this.state.cacheTime}
           noCacheTime={this.state.noCacheTime}
         />
