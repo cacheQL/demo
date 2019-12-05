@@ -3,19 +3,46 @@ const app = express();
 const PORT = 3000;
 const bodyParser = require("body-parser");
 const path = require("path");
-const graphqlHTTP = require('express-graphql');
-const graphql = require('graphql');
+const graphqlHTTP = require("express-graphql");
+const graphql = require("graphql");
+
+const controller = require("./controller");
+const cacheQL = require("./cacheql");
 
 app.use(express.json());
 
 app.use(bodyParser.json());
 
+const cacheQLData = {
+  redisHost: "redis-10212.c52.us-east-1-4.ec2.cloud.redislabs.com",
+  redisPort: 10212,
+  redisAuth: "eRQFVq70CXuDEoISTvKNVFtdevWabNbe",
+  timeToLive: 30
+};
+
+cacheQL.set(cacheQLData);
+cacheQL.auth();
+
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
-app.use('/graphql', (req, res) => {
-  console.log('in dis')
+app.post("/addPerson", controller.addPerson, (req, res) => {
+  res.status(200).send("Added");
+});
+
+app.post(
+  "/getPerson",
+  cacheQL.checkify,
+  controller.getPerson,
+  cacheQL.cachify,
+  (req, res) => {
+    res.status(200).send(res.locals.cache);
+  }
+);
+
+app.post("/getPersonDB", controller.getPersonDB, (req, res) => {
+  res.status(200).send(res.locals.queryResponse);
 });
 
 app.use(express.static("public"));
