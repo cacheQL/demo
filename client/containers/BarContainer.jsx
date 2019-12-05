@@ -26,7 +26,7 @@ class BarContainer extends Component {
           }
         },
         fill: {
-          colors: ["#666"]
+          colors: ["rgb(241, 173, 243)"]
         },
         dataLabels: {
           enabled: false
