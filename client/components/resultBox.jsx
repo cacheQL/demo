@@ -1,11 +1,13 @@
-import React from 'react';
+//TESTING WHETHER WE NEED SEPERATE COMPONENTS FOR TIMEBOX AND RESULTBOX
 
-const ResultBox = (props) => {
-    return ( 
-        <div>
-            <h4>result box</h4>
-        </div>
-     );
-}
- 
-export default ResultBox;
+// import React from "react";
+
+// const ResultBox = props => {
+//   return (
+//     <div>
+//       <h1>{props.cacheResult}</h1>
+//     </div>
+//   );
+// };
+
+// export default ResultBox;
