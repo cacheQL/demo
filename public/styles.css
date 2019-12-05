@@ -69,11 +69,18 @@ body {
   font-family: monospace;
   padding-left: 15px;
   padding-right: 15px;
+  padding-bottom: 40px;
 }
 
-.get-message-button{
-  padding-bottom: 10px;
-}
+/* .get-message-button{
+  padding-bottom: 30px;
+} */
+
+.oowwee{
+  position: fixed;
+  z-index: 2147483638;
+
+} 
 
 .bar-container {
   display: inline-block;
