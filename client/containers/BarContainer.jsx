@@ -59,8 +59,9 @@ class BarContainer extends Component {
       options = {this.state.options}
       series={this.state.series}
       type="bar"
-      height="450"
+      height="18%"
       width="100%"
+      className="bar-container"
     />
   }
 }
