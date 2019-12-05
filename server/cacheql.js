@@ -33,12 +33,14 @@ cacheQL.auth = () => {
 
 cacheQL.checkify = (req, res, next) => {
   // Checks the query if it is inside the cache
+  console.log("checkify");
   client.GET(req.body.query, function(err, response) {
-    //should we have the developer specify to store it in req.body?
+    // req.body.query is the graphql query from the frontend request
     if (err) {
       throw err;
     } else {
       // The query is not inside the cache
+      // redis returns null if the key is not inside the redis database/cache
       if (response === null) {
         res.locals.cache = null;
         return next();
@@ -46,6 +48,7 @@ cacheQL.checkify = (req, res, next) => {
         // the query is in the cache
         // saves the result in cache variable in res.locals
         // to be accessible in the next middleware
+        // Use JSON.parse because the response (value from redis) is saved using JSON stringify
         res.locals.cache = JSON.parse(response);
         return next();
       }
@@ -60,25 +63,29 @@ cacheQL.checkify = (req, res, next) => {
 // If null then saves query and result in cache
 
 cacheQL.cachify = (req, res, next) => {
-  //This is a case where the query doesn't exist in the cache
+  //This is a case where the query doesn't exist in the database
   //In the previous step the user must save the query and the querry response from the initial query to the db
-  //The query - res.locals.query
-  //The response of the query (querryResponse) - res.locals.queryResponse
-
+  //The query - req.body.query
+  //The response of the query (queryResponse) - res.locals.queryResponse
   if (res.locals.cache === null) {
     const query = req.body.query;
     const queryResponse = res.locals.queryResponse;
 
-    client.SET(query, JSON.stringify(queryResponse), function(err, response) {
+    // Stringifies the queryResponse to be able to save deeply nested objects in redis
+    client.SETEX(query, timeToLive, JSON.stringify(queryResponse), function(
+      err,
+      response
+    ) {
       if (err) {
         throw err;
       } else {
-        client.EXPIRE(query, timeToLive);
-
+        res.locals.cache = queryResponse;
         return next();
       }
     });
-  } else {
+  }
+  // The query is in the cache and skips over cachify
+  else {
     return next();
   }
 };
