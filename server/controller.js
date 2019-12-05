@@ -3,6 +3,7 @@ const { test } = require("./model.js");
 const controller = {};
 
 controller.addPerson = (req, res, next) => {
+   //-----------------------------------------------add start timer here
   console.log("add person controller");
   console.log(req.body.name);
   console.log(req.body.message);
@@ -14,6 +15,7 @@ controller.addPerson = (req, res, next) => {
     .then(result => {
       console.log("added");
       console.log(result);
+      //-----------------------------------------------add stop timer here
       // res.locals.id = result._id;
       return next();
     })
@@ -22,22 +24,22 @@ controller.addPerson = (req, res, next) => {
     });
 };
 
-controller.getPeople = (req, res, next) => {
-  // console.log("get messages controller");
+// controller.getPeople = (req, res, next) => {
+//   // console.log("get messages controller");
 
-  if (res.locals.cache === null) {
-    test.find().then(result => {
-      console.log("db");
-      console.log(result);
+//   if (res.locals.cache === null) {
+//     test.find().then(result => {
+//       console.log("db");
+//       console.log(result);
 
-      res.locals.queryResponse = result;
+//       res.locals.queryResponse = result;
 
-      return next();
-    });
-  } else {
-    return next();
-  }
-};
+//       return next();
+//     });
+//   } else {
+//     return next();
+//   }
+// };
 
 controller.getPerson = (req, res, next) => {
   if (res.locals.cache === null) {
