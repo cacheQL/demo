@@ -87,7 +87,7 @@ class MainContainer extends Component {
       .post(
         "/getPerson",
         {
-          name: this.state.nameGet
+          query: this.state.nameGet
         },
         {
           headers: {
@@ -101,9 +101,9 @@ class MainContainer extends Component {
         console.log(res);
         console.log(res.data);
 
-        // this.setState({
-        //   cacheResult:
-        // })
+        this.setState({
+          cacheResult: JSON.stringify(res.data)
+        });
         // if (res.status === 200) return this.props.history.push('/login');
         // return this.props.history.push('/signup');
       })
@@ -116,7 +116,7 @@ class MainContainer extends Component {
       .post(
         "/getPersonDB",
         {
-          name: this.state.nameGet
+          query: this.state.nameGet
         },
         {
           headers: {
@@ -130,9 +130,9 @@ class MainContainer extends Component {
         console.log(res);
         console.log(res.data);
 
-        // this.setState({
-        //   cacheResult:
-        // })
+        this.setState({
+          noCacheResult: JSON.stringify(res.data)
+        });
         // if (res.status === 200) return this.props.history.push('/login');
         // return this.props.history.push('/signup');
       })
