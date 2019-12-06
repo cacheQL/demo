@@ -69,7 +69,7 @@ body {
   font-family: monospace;
   padding-left: 15px;
   padding-right: 15px;
-  padding-bottom: 40px;
+  padding-bottom: 50px;
 }
 
 /* .get-message-button{
@@ -77,7 +77,7 @@ body {
 } */
 
 .oowwee{
-  position: fixed;
+  /* position: fixed; */
   z-index: 2147483638;
 
 } 
