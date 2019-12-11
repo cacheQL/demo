@@ -11,6 +11,7 @@ module.exports = {
   mode: process.env.NODE_ENV,
   devServer: {
     publicPath: '/build/',
+    port:9000,
     proxy: {
       '/': 'http://localhost:3000'
     }
