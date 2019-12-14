@@ -1,5 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
+const precss = require('precss');
+const autoprefixer = require('autoprefixer');
+
 // const css = require('file.css');
 // console.log(process.env.NODE_ENV);
 module.exports = {
@@ -11,7 +14,7 @@ module.exports = {
   mode: process.env.NODE_ENV,
   devServer: {
     publicPath: '/build/',
-    port:9000,
+    port:8080,
     proxy: {
       '/': 'http://localhost:3000'
     }
@@ -28,28 +31,29 @@ module.exports = {
           }
         }
       },
-      // {
-      //   test: /\.(s*)css$/,
-      //   use: ['style-loader', 'css-loader', 'sass-loader']
-      // }
       {
-        test: /\.(s*)css$/i,
+        test: /\.(png|svg|jpg|gif)$/,
         use: [
-          // Creates `style` nodes from JS strings
-          { loader: 'style-loader' },
-          // Translates CSS into CommonJS
-          {
-            loader: 'css-loader',
-            options: {
-              url: true,
-              import: true
-            }
+          'file-loader',
+        ],
+      },
+      {
+        test: /\.(s*)css$/,
+        use: [{ loader: 'style-loader' },
+        { loader: 'css-loader' },
+        {
+          loader: 'postcss-loader',
+          options: {
+            plugins() {
+              return [
+                precss,
+                autoprefixer,
+              ];
+            },
           },
-          // Compiles Sass to CSS
-          { loader: 'sass-loader' }
-          // url
-        ]
-      }
+        },
+        { loader: 'sass-loader' },]
+      },
     ]
   },
   resolve: {
