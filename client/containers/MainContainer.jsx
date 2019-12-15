@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import QueryContainer from "./QueryContainer.jsx";
 import CompareContainer from "./CompareContainer.jsx";
 import BarContainer from "./BarContainer.jsx";
+import Hero from "../components/Hero.jsx"
+import HowToUse from '../components/HowToUse'
+import Team from '../components/Team'
+import Footer from './Footer'
+
+
 
 import axios from "axios";
 
@@ -211,6 +217,7 @@ class MainContainer extends Component {
   render() {
     return (
       <React.Fragment>
+        <Hero />
         <QueryContainer
           name={this.state.name}
           message={this.state.message}
@@ -232,6 +239,9 @@ class MainContainer extends Component {
           cacheTime={this.state.cacheTime}
           noCacheTime={this.state.noCacheTime}
         />
+        <HowToUse />
+        <Team />
+        <Footer />
       </React.Fragment>
     );
   }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import MainContainer from "./containers/MainContainer.jsx";
-
+import TopNavbar from './components/TopNavbar';
 
 class App extends Component {
   constructor(props) {
@@ -10,9 +10,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div>
-          <h1 className="header">CacheQL Demo</h1>
-        </div>
+      <TopNavbar />
         <div>
           <MainContainer className="main-container"/>
         </div>
